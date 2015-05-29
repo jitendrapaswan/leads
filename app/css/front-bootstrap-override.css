@@ -1,0 +1,62 @@
+.modal-header {
+    border-bottom: 1px solid #e5e5e5;
+    font-weight: bold;
+    min-height: 16.43px;
+    padding: 7px 7px 7px 15px;
+}
+.navbar-default {
+    background-color: white;
+    border-color: white;
+}
+
+.carousel-control {
+    background: none repeat scroll 0 0 #222222;
+    border: 3px solid #ffffff;
+    border-radius: 23px;
+    color: #ffffff;
+    font-size: 60px;
+    font-weight: 100;
+    height: 40px;
+    left: 15px;
+    line-height: 30px;
+    margin-top: -20px;
+    opacity: 0.5;
+    position: absolute;
+    text-align: center;
+    top: 40%;
+    width: 40px;
+} 
+
+.panel {
+    background-color: #F2F2F6;
+    border-radius: 9px;
+    box-shadow: 1px 1px 8px 5px rgba(0, 0, 0, 0.12);
+    margin-bottom: 20px;
+   }
+ 
+.profileLeft{
+ 	 text-align: left; font-weight: bold; line-height: 30px;
+ }
+ 
+ .panel-heading {
+    text-align: center;
+ }
+ 
+ .well{
+ 	padding:0px 19px 19px 19px !important;
+ }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

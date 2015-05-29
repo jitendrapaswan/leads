@@ -1,0 +1,193 @@
+ .redStar{
+ 	color:red;
+}
+
+/*----- header--------- */
+
+.headerTopRowColor{
+	background-color: #659E32;
+	color:white;
+}
+ul li{
+	list-style:none;
+}
+.headerRowHeight{
+	height:32px;
+}
+.topRowMenu{
+	float:right;
+	padding: 7px 7px 7px 30px;
+}
+ul li a{
+	 color: white;
+	 font-weight: bold;
+	 cursor: pointer;
+}
+ul li a:hover, a:focus {
+    color: #2a6496;
+    text-decoration: none;
+}
+.headerSecondRowColor{
+	background-color:#0065CD;
+	/*height:100px;*/
+}
+.header-menu{
+	border-bottom: 1px solid #E6E7EA;
+    border-top: 1px solid #E6E7EA;
+    height: 54px;
+}
+.navbar-nav > li {
+    padding-left: 50px;
+}
+/*.featured-book{
+	background-color: #D9E0E7; padding-top: 20px; padding-bottom: 20px; padding-left: 40px;
+}*/
+.feature-description{
+	padding-top:8px;
+	color:gray;
+}
+
+.heading-footer{
+	color:white;
+}
+
+.footer-terms{
+	text-align: center; font-size: 16px; color: white; padding: 20px;color:gray;
+}
+
+.font-color{
+	color:#555555;
+}
+.logo{
+	float:left !important;
+	padding-top:8px;
+	padding-bottom:8px;
+}
+.profilePic{
+    width:150px;
+    height:120px;
+    border-radius:50%;
+}
+
+.SliderWidthHeight{
+    width:100%;
+    height:350px !important;  
+}
+/* my library */
+
+.task-bar {
+    background: none repeat scroll 0 0 #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    float: left;
+    margin-bottom: 10px;
+    padding: 15px 20px;
+    width: 100%;
+}
+
+.pageTitle{
+    font-size:18px;
+}
+
+.pdfImageLi{
+ background-color: white;
+    border-radius: 9px;
+    box-shadow: 1px 1px 8px 5px rgba(0, 0, 0, 0.12);
+    margin-bottom: 20px;
+}
+
+.pdfImage{
+    background-color: #ffffff;
+    border-radius: 9px;
+    box-shadow: 1px 1px 8px 5px rgba(0, 0, 0, 0.12);
+    margin: 10px;
+}
+.pdfThumb{
+margin: 10px;
+}
+.mylibraryTitle{
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 43px;
+     color: #2a6496;
+}
+.fontWeight{
+    font-weight:bold;
+}
+.bookDetail{
+    margin-left: -20px;
+    padding-top: 10px;
+}
+
+/* category */
+.leftCategory{
+    background-color: #659e32;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+}
+.licategory{
+      border-bottom: 1px dotted;
+    color: #88bd1f;
+    font-size: 15px;
+    list-style: outside none square;
+    padding-top: 10px;
+}
+.categories {
+    border-color: #87827e;
+    border-style: dotted;
+    border-width: thin;
+    min-height: 450px;
+}
+#categories1 li a{
+    text-decoration: none;
+}
+.publication{
+    font-size: 18px;
+    color:#333333;
+}
+.topBook{
+    margin: 0;
+    padding: 0;
+}
+.price {
+  /*  background-color: #659e32; 
+     color: #fff;
+     text-align: center;
+*/
+    font-size: 14px;
+    font-weight: bold;
+
+}
+.author_name {
+    font-size: 11px;
+}
+
+li.liCategory a{
+    color:#616161
+}
+.topBookAdjust{
+    padding-left: 40px;
+    padding-top: 10px;
+}
+.displayNone{
+    display: none;
+}
+.displayBlock{
+    display: block;
+}
+.minHeight{
+    min-height: 350px;
+}
+.textAlign{
+     color: #54606c;
+    font-size: 17px;
+    margin: 0 0 10px;
+    padding: 20px;
+    word-spacing: 3px;
+    word-wrap: break-word;
+}
+
+/* Redeem */
+.redeemTitle{color: white; font-size: 25px;}
+.redeemForm{padding-top: 10px;padding-bottom: 20px;}

@@ -1,0 +1,108 @@
+/**************************************************
+*** Online Examination System                   ***
+***---------------------------------------------***
+*** License: GNU General Public License V.3     ***
+*** Author: Manjunath Baddi                     ***
+*** Title: OES Cascading StyleSheet             ***
+**************************************************/
+
+/* 
+    Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+.oes-title{
+    margin-top:35px;
+    color: navy;
+}
+.navbar-default {
+    background-color: #f5f6f6;
+}
+.footer-nav > li > a{
+    color: #fff !important;
+    padding-bottom: 8px;
+    padding-top: 11px;
+}
+.ftr-text {
+    margin: 10px;
+}
+.form-title{
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.carousel-control{
+	width: 10%;
+}
+
+.carousel-control .icon-prev, .carousel-control .icon-next, .carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right{
+	top: 48%
+}
+.carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right, .carousel-control .icon-prev, .carousel-control .icon-next{
+	font-size:40px;
+}
+.carousel-control .glyphicon-chevron-left, .carousel-control .icon-prev{
+	margin-left:-40px;
+}
+.carousel-control .glyphicon-chevron-right, .carousel-control .icon-next{
+	margin-right:-27px;
+}
+.carousel-indicators{
+	bottom:0;
+}
+
+
+/* --------- login page ------------ */
+#frmContentLogin, #frmContent {
+    border-radius: 5px;
+    /*box-shadow: -15px 7px 10px -10px rgba(0, 0, 0, 0.75);*/
+    box-shadow: -5px 5px 3px -5px rgba(0, 0, 0, 0.25);
+}
+#frmContentLogin{
+	margin: 177px auto;
+    padding: 15px 25px;
+}
+.login-form {
+    border-radius: 5px;
+    box-shadow: 0 1px 8px rgba(230, 65, 0, 0.5);
+    color:#6d6d6d;
+    margin: 0 auto;
+    padding: 15px 25px;
+    width: 50%;
+    
+}
+.rwkTransparentBG {
+    background: linear-gradient(rgba(242, 242, 242, 0.75), rgba(249, 249, 249, 0.75)) repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+/* ---------- register ------------ */
+#frmContent {
+    margin: 15px auto;
+    padding: 15px 100px;
+}
+
+/* --------- content page ------------- */
+.pagecontent {
+	background: none repeat scroll 0 0 #fefefe;
+    border: 1px solid #efefef;
+    border-radius: 5px;
+    /*box-shadow: -5px 5px 3px -5px rgba(0, 0, 0, 0.25);*/
+    margin-bottom: 10px;
+    min-height: 500px;
+}
+
+.timerclass{
+	font-weight:bold;
+	font-size:16px;
+}
+.notifiaction-panel{
+ margin-top: 20px;
+}
+
+
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+  .notifiaction-panel{
+      
+  }  
+    
+}
+
