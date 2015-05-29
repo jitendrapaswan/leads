@@ -56,9 +56,25 @@ class Question extends CI_Controller {
         {
             $category = $this->input->post('category_name');     
             if(!empty($category)){
-                $this->db->insert('category',array('category_name'=>$category));                 
+                
+                $catResult = $this->db->query("select * from category where category_name='".$category."'");
+                if($catResult->num_rows <= 0)
+                {
+                    $this->db->insert('category',array('category_name'=>$category));
+                    $json = array('flag'=>'success','msg'=>'Set Name added successfully.');
+                    echo json_encode($json);
+                }    
+                else
+                {
+                    $json = array('flag'=>'error','msg'=>'Set Name already exist.');
+                    echo json_encode($json);
+                }
             }
         }
+    }
+    
+    public function category_listing()
+    {
         $this->data['category'] = $this->question_model->getCategories();
         $this->load->view('admin/category_list',$this->data);
     }
@@ -70,7 +86,19 @@ class Question extends CI_Controller {
             $cat_id = $this->input->post('cat_id');     
             $question_id = $this->input->post('question_id');
             if(!empty($cat_id) && !empty($question_id)){
-                $this->db->insert('category_question',array('c_id'=>$cat_id,'question_id'=>$question_id,'created_date'=>date("Y-m-d")));  
+                
+                $catResult = $this->db->query("select category_question.order from category_question where c_id=".$cat_id." order by category_question.order desc limit 1");
+                if($catResult->num_rows > 0)
+                {
+                    $catData = $catResult->row();
+                    $orderCount = $catData->order + 1;
+                }
+                else
+                {
+                    $orderCount = 0;
+                }
+                
+                $this->db->insert('category_question',array('c_id'=>$cat_id,'question_id'=>$question_id,'order'=>$orderCount,'created_date'=>date("Y-m-d")));  
                 echo 1;
             }
         }
@@ -83,11 +111,18 @@ class Question extends CI_Controller {
         $this->load->view("admin/categorywise_question_list",$this->data);
     }
     
-    public function display_question()
+    public function questionListing()
     {
         $cat_id = $this->input->post('cat_id'); 
         $this->data['questions'] = $this->question_model->getQuestions($cat_id);        
         $this->load->view('admin/question_list',$this->data);
+    }
+    
+    public function display_question()
+    {
+        $cat_id = $this->input->post('cat_id'); 
+        $this->data['questions'] = $this->question_model->getQuestions($cat_id);        
+        $this->load->view('admin/questions',$this->data);
     }
     
     public function sort_cat_ques($cat_id)
@@ -166,8 +201,70 @@ class Question extends CI_Controller {
                 $this->db->where('c_id',$cat_id);
                 $query = $this->db->get();               
                 $result = $query->result();
+                $result = array('data'=>$result);
                 echo json_encode($result);
         }
        
+    }
+    
+    public function delete_question()
+    {
+        $question_id = $this->input->post('question_id');  
+        $result      = $this->question_model->is_question_belongs_category($question_id);       
+        if(count($result) >= 1) {
+            echo $result->category_name;
+        } else {
+           $this->db->delete('question',array('id'=>$question_id));
+           echo 2;
+       }
+    }
+    
+    public function delete_question_option()
+    {
+        $option_id = $this->input->post('option_id');
+        $question_id = $this->input->post('question_id');
+        $result      = $this->question_model->is_questionoption_belongs_category($option_id,$question_id);          
+        if(count($result) >= 1) {
+            echo $result->category_name;
+        } else {
+           $this->db->delete('question_options',array('question_id'=>$question_id,'option_id'=>$option_id));
+           echo 2;
+       }
+    }
+    
+    public function edit_category()
+    {
+        //print_r($_POST);
+        $catId = $this->input->post('txtCatId');
+        $catName = $this->input->post('txtCatName');
+        $catResult = $this->db->query("select * from category where category_name='".$catName."' and c_id!=".$catId);
+        if($catResult->num_rows() > 0)
+        {
+            $json = array('flag'=>'error','msg'=>'Set Name already exist.');
+            echo json_encode($json);
+        }
+        else
+        {
+            $this->db->update('category',array('category_name'=>$catName),array('c_id'=>$catId));
+            $json = array('flag'=>'success','msg'=>'Set Name updated successfully.');
+            echo json_encode($json);
+        }
+    }
+    
+    public function delete_category()
+    {
+        $catId = $this->input->post('catId');
+        $catResult = $this->db->query("select * from category_question where c_id=".$catId);
+        if($catResult->num_rows() > 0)
+        {
+            $json = array('flag'=>'error','msg'=>'You cannot delete this Set ! It belongs to question.');
+            echo json_encode($json);
+        }
+        else
+        {
+            $this->db->delete('category',array('c_id'=>$catId));
+            $json = array('flag'=>'success','msg'=>'Set Name deleted successfully.');
+            echo json_encode($json);
+        }
     }
 }

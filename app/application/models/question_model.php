@@ -25,8 +25,9 @@ class Question_model extends CI_Model {
         {
             $this->db->select('*');
             $this->db->from('question');
-            $this->db->join('question_options','question.id = question_options.question_id');
-            $this->db->group_by('question.id');        
+           // $this->db->join('question_options','question.id = question_options.question_id');
+            $this->db->group_by('question.id'); 
+            $this->db->order_by('question.id','ASC'); 
             $query  = $this->db->get();
             $data   = $query->result();
             return($data);
@@ -76,6 +77,60 @@ class Question_model extends CI_Model {
             $query  = $this->db->get();
             $data   = $query->result();
             return($data);
+        }
+    }
+    
+    public function check_duplicate_category($cat_name)
+    {
+        $this->db->where('category_name', $cat_name);
+        $query = $this->db->get('category');        
+        $count_row = $query->num_rows();
+        if ($count_row > 0) {      
+          return 1;
+        } else {        
+          return 0;
+        }
+    }
+    
+    public function category_question_options($cat_id)
+    {
+        $this->db->select('option_id');
+        $this->db->from('category_question');
+        $this->db->join('question_options','category_question.question_id = question_options.question_id');
+        $this->db->where('c_id',$cat_id);
+        $query  = $this->db->get();
+        $data   = $query->result();
+        return($data);
+                
+    }    
+    public function is_question_belongs_category($question_id)
+    {
+        if(!empty($question_id))
+        {
+            $this->db->select('question_id,category_name');
+            $this->db->from('question');
+            $this->db->join('category_question','question.id = category_question.question_id');
+            $this->db->join('category','category.c_id = category_question.c_id');
+            $this->db->where('category_question.question_id',$question_id);                     
+            $query  = $this->db->get();            
+            $result = $query->row();
+            return $result;
+        }
+    }
+    
+    public function is_questionoption_belongs_category($option_id,$question_id)
+    {
+        if(!empty($question_id)&& !empty($option_id))
+        {
+            $this->db->select('option_id,category_name');
+            $this->db->from('question');            
+            $this->db->join('question_options','question.id = question_options.question_id');
+            $this->db->join('category_question','question.id = category_question.question_id');
+            $this->db->join('category','category.c_id = category_question.c_id');
+            $this->db->where('question_options.option_id',$option_id);                     
+            $query  = $this->db->get();            
+            $result = $query->row();
+            return $result;
         }
     }
     

@@ -66,7 +66,9 @@
                 </div>
                 
                 <div class="panel-body scroll">
-                     <ul class="list-group" id="question_result"></ul>
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                        <div class="list-group" id="question_result"></div>
+                    </div>
                 </div> 
             </div>
         </div>      
@@ -180,7 +182,7 @@ $(document).ready(function() {
 function display_questions()
 {
     $.ajax({
-                url : "<?php echo base_url();?>admin/question/display_question/1",
+                url : "<?php echo base_url();?>admin/question/questionListing",
                 type: "POST",                                                            
                 success: function(result) 
                 {                   
@@ -188,6 +190,66 @@ function display_questions()
                     $("#question_result").html(result);	
                 }
             });  
+}
+
+function delete_question(question_id)
+{
+    bootbox.confirm("Are you sure you want to delete this question ?", function(result) 
+    {
+        if(result == true)
+        { 
+            $.ajax({
+                        url : "<?php echo base_url();?>admin/question/delete_question",
+                        type: "POST",    
+                        data: {question_id :question_id},
+                        success: function(result) 
+                        {
+                            if(result!='')
+                            {
+                                if($.isNumeric(result))
+                                {
+                                   $("#question_"+question_id).remove();
+                                }
+                                else
+                                {
+                                    bootbox.alert('Question is associated with <b>'+result+'</b> set and cannot be removed. ');
+                                    return false;
+                                }
+                            }
+                        }
+                    });  
+        }
+    });
+}
+
+function delete_question_option(option_id,question_id)
+{
+    bootbox.confirm("Are you sure you want to delete this question option ?", function(result) 
+    {
+        if(result == true)
+        { 
+            $.ajax({
+                        url : "<?php echo base_url();?>admin/question/delete_question_option",
+                        type: "POST",    
+                        data: {option_id:option_id ,question_id :question_id},
+                        success: function(result) 
+                        {
+                            if(result!='')
+                            {
+                                if($.isNumeric(result))
+                                {
+                                    $("#option_"+option_id).remove();
+                                }
+                                else
+                                {
+                                    bootbox.alert('Question is associated with <b>'+result+'</b> set and cannot be removed.');
+                                    return false;
+                                }
+                            }
+                        }
+                    });  
+        }
+    });
 }
 </script>
 <style>

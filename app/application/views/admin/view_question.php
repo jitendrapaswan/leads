@@ -4,9 +4,11 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
+    
     addCategory();
     display_questions();    
     fetch_category_questions();
+    display_category();
     
     $("#category_question_result").sortable({
         stop : function(event, ui){
@@ -27,20 +29,49 @@ $(document).ready(function() {
 
 function addCategory()
 {
-   
     $.ajax({
                 url : "<?php echo base_url();?>admin/question/addCategory",
                 type: "POST",                        
                 data :jQuery("#addCategory").serialize(),                        
                 success: function(result) 
-                {                   
-                    $("#category_result").html('');
-                    $("#category_result").html(result);	
-                    $("#addCategory input").val("");
+                {  
+                    var data = $.parseJSON(result);
+                    //console.log(data);
+                    if(data.flag == 'success')
+                    {
+                         //alert(result);
+                         $("#lblCatMsg").html(data.msg).css({color:'#3C8C8F','font-weight':'bold'});
+                         $("#lblCatMsg").show();
+                         setTimeout(function(){$("#lblCatMsg").fadeOut('slow');},2000);
+                         $("#addCategory input").val("");
+                         display_category();
+                    }
+                    else if(data.flag == 'error')
+                    {
+                        // alert(result);
+                        $("#lblCatMsg").html(data.msg).css({color:'#f00','font-weight':'bold'});
+                        $("#lblCatMsg").show();
+                        setTimeout(function(){$("#lblCatMsg").fadeOut('slow');},2000);
+                    }
+                   
 
                 }
             });       
     
+}
+
+function display_category()
+{
+    $.ajax({
+                url : "<?php echo base_url();?>admin/question/category_listing",
+                type: "POST",          
+                success: function(result) 
+                {   
+                    $("#category_result").html('');
+                    $("#category_result").html(result);	
+                   
+                }
+            }); 
 }
 
 function display_questions()
@@ -141,6 +172,8 @@ function delete_category_question(question_id)
     }
     
 }
+
+
   
 </script>
 
@@ -173,18 +206,24 @@ label.error {
             </div>
             <div class="panel panel-default" style="margin-top:20px;">
                 <div class="panel-heading">
-                    <h1 class="panel-title">Add Set</h1>                    
+                    <h1 class="panel-title">Add Set</h1>  
+                    <div style="margin-top:-20px;" class="pull-right">
+                        <a href="<?php echo site_url('admin/question/viewQuestion'); ?>">
+                            <button class="btn btn-xs btn-primary">Back</button>                  
+                        </a>
+                    </div>
                 </div>
                 
                 <div class="panel-body">
                     <form class="form-inline" id="addCategory">
                         <div class="form-group">
                             <label for="exampleInputName2">Set Name</label>
-                            &nbsp;&nbsp;<input type="text" class="form-control"name="category_name" id="category_name" placeholder="Enter category name" required="">
+                            &nbsp;&nbsp;<input type="text" class="form-control"name="category_name" id="category_name" placeholder="Enter Set Name" required="">
                         </div>                                 
                         <input type="hidden" id="orderList">
                         <button type="button" class="btn btn-primary" onclick="addCategory();">Add</button>
                     </form>
+                    <p id="lblCatMsg" style="display: none; margin-top:10px;"></p>
                 </div>
             </div>
             

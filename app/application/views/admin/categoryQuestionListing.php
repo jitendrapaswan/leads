@@ -2,6 +2,7 @@
 if(!empty($questions)) 
 {
     $i=1;
+    $quesCount = count($questions);
     foreach($questions as $row) 
     {
         $options = $this->question_model->get_option_by_question_id($row->question_id); 
@@ -22,22 +23,41 @@ if(!empty($questions))
                             <?php if(!empty($options)) {                                     
                                     
                                     foreach ($options as $options)  {?>
+                                    
                                         <div class="radio">
-                                            <input type="radio" name="option" id="option" value="<?php echo $options->option_id; ?>" onclick="option_based_question('<?php echo $row->question_id; ?>')"><?php echo ucfirst($options->option_value); ?>                                                                                
-                                            <select class="form-control ddclass input-md dropdown_<?php echo $row->question_id; ?>"  onchange="addDependentQuestion('<?php echo $row->question_id; ?>','<?php echo $options->option_id; ?>',this.value)">                                                
-                                                <option value="">Select</option>
-                                                <option value="1">Next</option>                                            
+                                            <?php
+                                                if($i < $quesCount)
+                                                {
+                                            ?>
+                                            <input type="radio" name="option_<?php echo $options->option_id; ?>" id="option_<?php echo $options->option_id; ?>" value="<?php echo $options->option_id; ?>" onclick="option_based_question('<?php echo $row->question_id; ?>',this)"><?php echo ucfirst($options->option_value); ?>                                                                                
+                                            <select id="optionSelect_<?php echo $options->option_id; ?>" class="form-control ddclass input-md dropdown_<?php echo $row->question_id; ?>"  onchange="addDependentQuestion('<?php echo $row->question_id; ?>','<?php echo $options->option_id; ?>',this.value)">                                                
+                                                <option value="">Next</option>
+                                                                                        
                                             </select> 
-                                             </div>
+                                            
+                                            
+                                            <?php
+                                                }
+                                                else
+                                                    echo ucfirst($options->option_value);
+                                            ?>
+                                        </div>
                                     <?php }               
-                                }?>
+                                } else { echo "No options"; } ?>
                             </ul>
                         
                     </div>
                 </div>
                 
             </div>
-
+            <script>
+                $().ready(function(){
+//                    $.each(optionArray,function(key,val){
+//                        $("#option_"+val).trigger('click');
+//                        $("#optionSelect_"+val).trigger('change');
+//                    }); 
+                });
+            </script>
        
     <?php  $i++; }
     
