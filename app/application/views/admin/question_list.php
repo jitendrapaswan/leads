@@ -9,7 +9,7 @@ if(!empty($questions))
             <div class="panel-heading">
                 <h4 class="panel-title">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse<?php echo $i; ?>"><?php echo $i; ?>. <?php echo ucfirst($row->question);?> ?</a>
-                    <div class="pull-right"><i class="fa fa-trash-o" onclick="delete_question('<?php echo $row->id; ?>')" style="cursor:pointer;"></i></div>
+                    <div class="pull-right"><i class="indicator fa fa-chevron-down"></i>&nbsp;&nbsp;<i class="fa fa-trash-o" onclick="delete_question('<?php echo $row->id; ?>')" style="cursor:pointer;"></i></div>
                 </h4>
             </div>
             <div id="collapse<?php echo $i; ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">

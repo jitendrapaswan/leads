@@ -20,9 +20,9 @@ if(!empty($category))
 {
     foreach ($category as $row) 
     {?>
-        <a href="javascript:void(0);" class="list-group-item lbl-category " id="<?php echo $row->c_id; ?>" onclick="fetch_category_questions('<?php echo $row->c_id; ?>');">
+<a href="javascript:void(0);" class="list-group-item lbl-category " style="cursor:pointer;" id="<?php echo $row->c_id; ?>" onclick="fetch_category_questions('<?php echo $row->c_id; ?>');">
             
-            <label class="cat-label" id="catLabel_<?php echo $row->c_id; ?>"><?php echo !empty($row->category_name) ? $row->category_name : ""; ?></label>
+            <label class="cat-label" style="cursor:pointer;" id="catLabel_<?php echo $row->c_id; ?>"><?php echo !empty($row->category_name) ? $row->category_name : ""; ?></label>
             
         </a>
         <div class="cat-action">

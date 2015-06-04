@@ -174,7 +174,6 @@ function delete_category_question(question_id)
 }
 
 
-  
 </script>
 
 
@@ -230,11 +229,11 @@ label.error {
             
              <div class="panel panel-default">
                 <div class="panel-body">
-                    <div class="col-md-2">                                  
+                    <div class="col-md-2 scroll">                                  
                         <div class="list-group" id="category_result"></div>
                     </div>
 
-                    <div class="col-md-10 scroll" id="question">
+                    <div class="col-md-10 scroll" id="accordion">
                         <ul class="list-group" id="question_result"></ul>
                     </div> 
                 </div>

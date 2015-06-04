@@ -14,6 +14,7 @@ if(!empty($questions))
                 <div class="panel-heading">
                     <h4 class="panel-title">
                         <a data-toggle="collapse" data-parent="#accordion" href="#collapse<?php echo $i; ?>"><?php echo $i; ?>. <?php echo ucfirst($row->question);?> ?</a>
+                        <div class="pull-right"><i class="indicator fa fa-chevron-down"></i>&nbsp;&nbsp;</div>
                     </h4>
                 </div>
                 
@@ -49,15 +50,8 @@ if(!empty($questions))
                     </div>
                 </div>
                 
-            </div>
-            <script>
-                $().ready(function(){
-//                    $.each(optionArray,function(key,val){
-//                        $("#option_"+val).trigger('click');
-//                        $("#optionSelect_"+val).trigger('change');
-//                    }); 
-                });
-            </script>
+                
+            </div>           
        
     <?php  $i++; }
     
@@ -68,6 +62,16 @@ else
     echo "No questions";
 }
 ?>
+<script>
+function toggleChevron(e) {
+    $(e.target)
+        .prev('.panel-heading')
+        .find("i.indicator")
+        .toggleClass('fa fa-chevron-down fa fa-chevron-up');
+}
+$('#accordion').on('hidden.bs.collapse', toggleChevron);
+$('#accordion').on('shown.bs.collapse', toggleChevron);
+</script>
 <style>
 .ddclass
 {

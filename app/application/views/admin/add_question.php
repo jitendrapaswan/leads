@@ -251,10 +251,19 @@ function delete_question_option(option_id,question_id)
         }
     });
 }
+
+function toggleChevron(e) { 
+    $(e.target)
+        .prev('.panel-heading')
+        .find("i.indicator")
+        .toggleClass('fa fa-chevron-down fa fa-chevron-up');
+}
+$('#accordion').on('hidden.bs.collapse', toggleChevron);
+$('#accordion').on('shown.bs.collapse', toggleChevron);
 </script>
 <style>
 .scroll {    
-    max-height: 300px;    
+    max-height: 250px;    
     overflow: auto;
     border: 1px solid #DDD;
     padding: 15px;

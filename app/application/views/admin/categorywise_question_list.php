@@ -4,7 +4,7 @@
     foreach($questions as $row) 
     {?>
         <li class="list-group-item cat" id ="questionId-<?php echo $row->question_id;?>">Question <?php echo $i; ?>: <?php echo ucfirst($row->question)." ?"; ?> 
-            <div class="pull-right"><a href="javascript:void(0);" onclick="delete_category_question('<?php echo $row->question_id;?>');"><i class="fa fa-trash-o fa-fw"></i></a>    
+            <div class="pull-right"><i class="fa fa-trash-o fa-fw" onclick="delete_category_question('<?php echo $row->question_id;?>');" style="cursor:pointer;"></i></a>    
 </div>    
         
 

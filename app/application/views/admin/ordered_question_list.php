@@ -116,6 +116,15 @@ function test(cat_id)
 }
 
 
+function toggleChevron(e) { alert("DSF");
+    $(e.target)
+        .prev('.panel-heading')
+        .find("i.indicator")
+        .toggleClass('fa fa-chevron-down fa fa-chevron-up');
+}
+$('#accordion').on('hidden.bs.collapse', toggleChevron);
+$('#accordion').on('shown.bs.collapse', toggleChevron);
+
 </script>
 
 

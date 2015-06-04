@@ -58,12 +58,11 @@ if(!empty($questions))
                        
                         <tr id="question_<?php echo $row->id; ?>">
                           <td><?php echo $i; ?></td>
-<!--                          <td><?php //echo $row->question; ?></td>-->
                           <td>
                                
                                     
                                         <a style="color: #333;" data-toggle="collapse" data-parent="#accordion" href="#collapse<?php echo $i; ?>"><?php echo ucfirst($row->question);?> ?</a>                                       
-                                  
+                                      
                                 
             <div id="collapse<?php echo $i; ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                 <div class="panel-body">       
