@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 29, 2015 at 05:36 PM
+-- Generation Time: Jun 04, 2015 at 03:51 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -30,17 +30,14 @@ CREATE TABLE IF NOT EXISTS `category` (
   `c_id` int(11) NOT NULL AUTO_INCREMENT,
   `category_name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`c_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `category`
 --
 
 INSERT INTO `category` (`c_id`, `category_name`) VALUES
-(1, 'first set'),
-(2, 'second'),
-(4, 'set1'),
-(5, 'Set 1');
+(1, 'Set1');
 
 -- --------------------------------------------------------
 
@@ -55,27 +52,20 @@ CREATE TABLE IF NOT EXISTS `category_question` (
   `order` int(11) DEFAULT NULL,
   `created_date` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=98 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `category_question`
 --
 
 INSERT INTO `category_question` (`id`, `c_id`, `question_id`, `order`, `created_date`) VALUES
-(31, 2, 1, NULL, '2015-05-27'),
-(41, 1, 1, 0, '2015-05-28'),
-(42, 1, 2, 1, '2015-05-28'),
-(48, 4, 1, 0, '2015-05-28'),
-(49, 4, 2, 1, '2015-05-28'),
-(50, 4, 3, 2, '2015-05-28'),
-(51, 4, 4, 3, '2015-05-28'),
-(52, 4, 5, 4, '2015-05-28'),
-(53, 4, 5, 5, '2015-05-28'),
-(54, 4, 6, 6, '2015-05-28'),
-(94, 5, 7, 0, '2015-05-29'),
-(95, 5, 9, 1, '2015-05-29'),
-(96, 5, 8, 2, '2015-05-29'),
-(97, 1, 4, 2, '2015-05-29');
+(1, 1, 6, 0, '2015-06-03'),
+(2, 1, 7, 1, '2015-06-03'),
+(3, 1, 8, 2, '2015-06-03'),
+(4, 1, 10, 3, '2015-06-03'),
+(5, 1, 9, 4, '2015-06-03'),
+(6, 1, 12, 5, '2015-06-03'),
+(7, 1, 5, 6, '2015-06-03');
 
 -- --------------------------------------------------------
 
@@ -593,22 +583,25 @@ CREATE TABLE IF NOT EXISTS `question` (
   `question` text NOT NULL,
   `created_date` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `question`
 --
 
 INSERT INTO `question` (`id`, `question`, `created_date`) VALUES
-(1, 'test', '2015-05-26'),
-(2, 'test2', '2015-05-26'),
-(3, 'teste3', '2015-05-28'),
-(4, 'gfgfdgdfgg rddg ', '2015-05-28'),
-(5, 'gfdgdfg', '2015-05-28'),
-(6, 'dfgfdhfdh fdhdfhdfhdf', '2015-05-28'),
-(7, 'Do you have IT team', '2015-05-28'),
-(8, 'Is it inhouse or outsourced', '2015-05-28'),
-(9, 'How do you meet your IT requirements', '2015-05-28');
+(1, 'what is your branch', '2015-06-02'),
+(2, 'Tell me about hobbies', '2015-06-02'),
+(3, 'what is your Gender', '2015-06-02'),
+(4, 'What is your qualification', '2015-06-02'),
+(5, 'what is your technology', '2015-06-02'),
+(6, ' Trace the odd data type', '2015-06-02'),
+(7, 'Which of the folowing are valid float values', '2015-06-02'),
+(8, 'Which of following are compound data type', '2015-06-02'),
+(9, ' Identify the invalid identifier', '2015-06-02'),
+(10, 'The left association operator % is used in PHP for', '2015-06-02'),
+(11, ' Trace the function that does continue the script execution even if the file inclusion fails', '2015-06-02'),
+(12, 'Which of the following functions require the allow-url-fopen must be enabled', '2015-06-02');
 
 -- --------------------------------------------------------
 
@@ -623,19 +616,24 @@ CREATE TABLE IF NOT EXISTS `question_dependency` (
   `dependent_question_id` int(11) DEFAULT NULL,
   `created_date` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `question_dependency`
 --
 
 INSERT INTO `question_dependency` (`id`, `question_id`, `option_id`, `dependent_question_id`, `created_date`) VALUES
-(1, 7, 13, 9, '2015-05-28'),
-(2, 7, 14, 8, '2015-05-28'),
-(3, 9, 17, 1, '2015-05-28'),
-(4, 9, 18, 1, '2015-05-28'),
-(5, 8, 15, 1, '2015-05-28'),
-(6, 8, 16, 1, '2015-05-28');
+(1, 6, 12, 8, '2015-06-03'),
+(2, 6, 13, 8, '2015-06-03'),
+(3, 7, 14, 10, '2015-06-03'),
+(4, 7, 15, 10, '2015-06-03'),
+(5, 8, 16, 9, '2015-06-03'),
+(6, 8, 17, 9, '2015-06-03'),
+(7, 10, 20, 12, '2015-06-03'),
+(8, 10, 21, 12, '2015-06-03'),
+(9, 10, 22, 12, '2015-06-03'),
+(10, 9, 18, 5, '2015-06-03'),
+(11, 9, 19, 5, '2015-06-03');
 
 -- --------------------------------------------------------
 
@@ -649,31 +647,39 @@ CREATE TABLE IF NOT EXISTS `question_options` (
   `option_value` varchar(255) DEFAULT NULL,
   `created_date` date DEFAULT NULL,
   PRIMARY KEY (`option_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=27 ;
 
 --
 -- Dumping data for table `question_options`
 --
 
 INSERT INTO `question_options` (`option_id`, `question_id`, `option_value`, `created_date`) VALUES
-(1, 1, 'a1', '2015-05-26'),
-(2, 1, 'a2', '2015-05-26'),
-(3, 2, 'a3', '2015-05-26'),
-(4, 2, 'a4', '2015-05-26'),
-(5, 3, 'fdfds', '2015-05-28'),
-(6, 3, 'dsfsdfdsf', '2015-05-28'),
-(7, 4, 'dfdsf', '2015-05-28'),
-(8, 4, 'fsdfdsf', '2015-05-28'),
-(9, 5, 'fdsfds', '2015-05-28'),
-(10, 5, 'dfdsfd', '2015-05-28'),
-(11, 6, 'ddfgdfgfd', '2015-05-28'),
-(12, 6, 'gfgdfgdf', '2015-05-28'),
-(13, 7, 'Yes', '2015-05-28'),
-(14, 7, 'No', '2015-05-28'),
-(15, 8, 'Inhouse', '2015-05-28'),
-(16, 8, 'Outsourced', '2015-05-28'),
-(17, 9, 'By building a fresh team', '2015-05-28'),
-(18, 9, 'By subcontracting', '2015-05-28');
+(1, 1, 'EC', '2015-06-02'),
+(2, 1, 'IT', '2015-06-02'),
+(3, 2, 'Playing', '2015-06-02'),
+(4, 2, 'Dancing', '2015-06-02'),
+(5, 3, 'male', '2015-06-02'),
+(6, 3, 'female', '2015-06-02'),
+(7, 4, 'BE', '2015-06-02'),
+(8, 4, 'BA', '2015-06-02'),
+(9, 5, 'c++', '2015-06-02'),
+(10, 5, 'java', '2015-06-02'),
+(11, 5, 'php', '2015-06-02'),
+(12, 6, ' floats', '2015-06-02'),
+(13, 6, 'integer', '2015-06-02'),
+(14, 7, ' 4.5678', '2015-06-02'),
+(15, 7, '21', '2015-06-02'),
+(16, 8, 'Array', '2015-06-02'),
+(17, 8, 'object', '2015-06-02'),
+(18, 9, 'my-function', '2015-06-02'),
+(19, 9, 'size', '2015-06-02'),
+(20, 10, 'percentage', '2015-06-02'),
+(21, 10, 'bitwise ', '2015-06-02'),
+(22, 10, 'division', '2015-06-02'),
+(23, 11, ' include ()', '2015-06-02'),
+(24, 11, 'require ()', '2015-06-02'),
+(25, 12, 'include()', '2015-06-02'),
+(26, 12, ' require()', '2015-06-02');
 
 -- --------------------------------------------------------
 
@@ -747,7 +753,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `role_id`, `title`, `address`, `address_line_2`, `country`, `state`, `city`, `zip_code`, `phone`, `created_date`, `last_updated_date`, `status`) VALUES
 (1, 'admin', NULL, 'admin@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2015-05-14 10:56:00', NULL, 1),
 (2, 'Neha', 'Kochar', 'partner1@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 4, 'Miss.', '', NULL, NULL, NULL, NULL, NULL, '', '2015-05-14 07:36:59', NULL, 1),
-(3, 'test', 'user1', 'user1@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2015-05-14 07:42:04', '2015-05-14 16:54:33', 1),
+(3, 'test', 'user1', 'user2@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2015-05-14 07:42:04', '2015-06-02 09:49:22', 1),
 (4, 'test2qew', 'user2wqe', 'user2@gmail.com', '7612a5020fa46fb6390ed4073f34fd36', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2015-05-14 16:54:15', '2015-05-18 08:20:41', 1),
 (5, 'pooja', 'soni', 'user2@gmail.com', '687a0372dcf1c971df995949819902b0', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2015-05-15 15:58:24', '2015-05-15 16:04:36', 1),
 (6, 'test4', 'user123', 'user3@gmail.com', '98bf55211b57ff3f5529bc6aacbb7f4d', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2015-05-18 08:20:23', '2015-05-18 08:20:33', 1),
@@ -783,6 +789,32 @@ CREATE TABLE IF NOT EXISTS `user_company_map` (
   `UserId` int(11) NOT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_test`
+--
+
+CREATE TABLE IF NOT EXISTS `user_test` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `c_id` int(11) DEFAULT NULL,
+  `question_id` int(11) DEFAULT NULL,
+  `option_id` int(11) DEFAULT NULL,
+  `user_id` int(11) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `user_test`
+--
+
+INSERT INTO `user_test` (`id`, `c_id`, `question_id`, `option_id`, `user_id`, `timestamp`) VALUES
+(1, 1, 6, 13, 2, '2015-06-03 09:50:12'),
+(2, 1, 8, 17, 2, '2015-06-03 09:50:13'),
+(3, 1, 9, 18, 2, '2015-06-03 09:50:15'),
+(4, 1, 5, 10, 2, '2015-06-04 04:56:59');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
